@@ -12,8 +12,8 @@
         return 1 - (1 - x) * (1 - x);
     }
 
-    function easeOutCirc(x: number): number {
-        return Math.sqrt(1 - Math.pow(x - 1, 2));
+    function easeInOutQuart(x: number): number {
+        return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;
     }
 
     function Update()
@@ -43,7 +43,7 @@
         
         if (timeSinceStart > 3000)
         { 
-            let timeIndex = easeOutCirc(Math.min((timeSinceStart - 3000) / 1000, 1))
+            let timeIndex = easeInOutQuart(Math.min((timeSinceStart - 3000) / 1000, 1))
             ContentHolder!.style.width = lerp(100, 65, timeIndex) + "px  "
             // @ts-ignore
             ItemHolder!.children[ItemHolder!.children.length - 1].style.width = lerp(100, 65, timeIndex) + "px "
@@ -55,7 +55,7 @@
         if (timeSinceStart > 4000)
         {
 
-            ContentHolder!.innerHTML = ItemHolder!.children[ItemHolder!.children.length - 1].innerHTML
+            ContentHolder!.outerHTML = ItemHolder!.children[ItemHolder!.children.length - 1].innerHTML
             ContentHolder!.style.width = ""
 
         } else {
@@ -70,21 +70,28 @@
 
     })
 
+    let Items = [
+        "Insane",
+        "Robotic",
+        "Crazy",
+        "Mad",
+        "Kiwi",
+        "Autistic",
+        "Creative",
+        "Intrigued",
+        "Dyslexic",
+        "Human",
+        " Meepso"
+    ]
+
 </script>
 
 <div id="MainContentHolder">
     <div id="ItemHolder">
-        <pre class="GlideItem">Insane</pre>
-        <pre class="GlideItem">Robotic</pre>
-        <pre class="GlideItem">Crazy</pre>
-        <pre class="GlideItem">Mad</pre>
-        <pre class="GlideItem">Kiwi</pre>
-        <pre class="GlideItem">Autistic</pre>
-        <pre class="GlideItem">Creative</pre>
-        <pre class="GlideItem">Intrigued</pre>
-        <pre class="GlideItem">Dyslexic</pre>
-        <pre class="GlideItem">Human</pre>
-        <pre class="GlideItem"> Meepso</pre>
+
+        {#each Items as Item}
+            <pre class="GlideItem">{Item}</pre>
+        {/each}
 
     </div>
 </div>

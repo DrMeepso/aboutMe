@@ -24,20 +24,44 @@
         align-items: center;
         flex-direction: column;
 
+        width: 460px;
+
     }
 
     .lineBreak {
-        width: 460px;
         height: 1px;
         margin-top: 5px;
         margin-bottom: 5px;
         background-color: #000;
+
+        animation: widen 1s cubic-bezier(0.76, 0, 0.24, 1);
+        animation-fill-mode: forwards;
+
+    }
+
+    @keyframes widen {
+        0% {
+            width: 0px;
+        }
+        100% {
+            width: 460px;
+        }
+    }
+
+    @keyframes widenMobile {
+        0% {
+            width: 0px;
+        }
+        100% {
+            width: 90%;
+        }
     }
 
     @media only screen and (max-width: 600px) {
 
         .lineBreak {
-            width: 90%;
+            animation: widenMobile 1s cubic-bezier(0.76, 0, 0.24, 1);
+            animation-fill-mode: forwards;
         }
 
     }

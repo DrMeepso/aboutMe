@@ -5,10 +5,7 @@
 <style>
 
     #TitleBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        display: inline;
 
         width: auto;
         height: auto;
@@ -23,6 +20,7 @@
         color: #000;
         animation: title 1s ease-in-out infinite alternate;
         margin: 0px;
+        display: inline;
     }
 
 </style>
