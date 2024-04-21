@@ -1,10 +1,13 @@
 <script lang="ts">
+  import Background from "./Background.svelte";
     import Contact from "./Contact.svelte";
     import Info from "./Info.svelte";
     import TitleBox from "./TitleBox.svelte";
 </script>
 
-<main>
+<main id="ContentHolder">
+
+    <Background/>
 
     <TitleBox/>
     <Info/>
